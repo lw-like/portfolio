@@ -1,0 +1,158 @@
+:host {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+h1,
+p {
+  margin: 0;
+}
+
+$line-color: #333;
+$font-color: #09002f;
+$neon-color: #ff0000; // Red for scary effect
+
+.uc {
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        flex: 1;
+        background: url("/background-crp.webp") no-repeat;
+        background-size: cover;
+        background-position: center center;
+        position: relative;
+        overflow: hidden;
+        mask-image: linear-gradient(to bottom, transparent, $font-color 50%, $font-color); // Mask
+        -webkit-mask-image: linear-gradient(to bottom, transparent, $font-color 50%, $font-color); // Safari support
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            background-image: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 1px, // Thinner lines
+                $line-color 1px,
+                $line-color 2px // Thinner spacing
+            );
+            opacity: 0;
+            animation: random-lines 9s linear infinite;
+        }
+    }
+
+
+  &__heading {
+    position: absolute;
+    top: 20%;
+    left: 0;
+    right: 0;
+    font-size: 2.9rem;
+    color: $font-color;
+    margin-bottom: 1rem;
+    letter-spacing: 0.6rem;
+    text-align: center;
+    animation: heading-blink 3s steps(4, end) infinite;
+
+    &-char {
+        display: inline-block;
+        position: relative;
+        color: #ccc;
+
+        &.glitch {
+            animation: char-blink 4s steps(4, end) infinite;
+        }
+    }
+  }
+
+  &__message {
+    font-size: 3rem;
+    color: $font-color;
+    margin-bottom: 1rem;
+    font-weight: 900;
+
+    display: flex;
+    flex-direction: column;
+
+    &--smaller {
+        font-size: 2.8rem;
+    }
+  }
+
+  &__message-animated {
+    animation: glitch 0.9s steps(2, end) infinite;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+}
+
+@keyframes glitch {
+  0% {
+    transform: translate(0, 0);
+    opacity: 1;
+    clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+  }
+  25% {
+    transform: translate(-5px, 10px);
+    opacity: 0.8;
+    clip-path: polygon(0 33%, 100% 33%, 100% 66%, 0 66%);
+  }
+  50% {
+    transform: translate(5px, -5px);
+    opacity: 0.6;
+    clip-path: polygon(0 66%, 100% 66%, 100% 100%, 0 100%);
+  }
+  75% {
+    transform: translate(-3px, 3px);
+    opacity: 0.9;
+    clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 1;
+    clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+  }
+}
+
+@keyframes char-blink {
+    0%, 100% { opacity: 1; }
+    10% { opacity: 1; }
+    20% { opacity: 0; }
+    30% { opacity: 0; }
+    40% { opacity: 1; }
+    50% { opacity: 0; }
+    60% { opacity: 0; }
+    70% { opacity: 1; }
+    85% { opacity: 1; }
+    95% { opacity: 1; }
+}
+
+@keyframes heading-blink {
+    0%, 100% { background-color: transparent; }
+    15% { background-color: $font-color;  }
+    25% { background-color: $font-color;  }
+    45% { background-color: transparent;  }
+    50% { background-color: transparent;  }
+    75% { background-color: $font-color;  }
+    90% { background-color: $font-color;  }
+}
+
+@keyframes random-lines {
+    0% { opacity: 0; }
+    10% { opacity: 0.2; }
+    20% { opacity: 0.8; }
+    30% { opacity: 0.4; }
+    50% { opacity: 0.9; }
+    70% { opacity: 0.6; }
+    80% { opacity: 0; }
+    90% { opacity: 0.9; }
+    100% { opacity: 0; }
+}

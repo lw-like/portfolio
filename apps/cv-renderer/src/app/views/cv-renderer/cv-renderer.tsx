@@ -1,8 +1,14 @@
+import ContentSection from "./components/content-section/content-section";
+import HeaderSection from "./components/header-section/header-section";
+
 export function CvRenderer() {
   return (
-    <div>
-      <h1>Welcome to CvRenderer!</h1>
-    </div>
+    <main>
+      <HeaderSection />
+      <div>
+        <ContentSection />
+      </div>
+    </main>
   );
 }
 

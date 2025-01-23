@@ -1,8 +1,12 @@
 import { CVHeader } from "./cv-header.model";
 import { CVSection } from "./cv-section.model";
-import { KeyValue } from "./key-value.model";
+
+export enum CVDocumentFields {
+    Header = 'header',
+    Sections = 'sections'
+}
 
 export interface CVDocument {
-    header: CVHeader;
-    sections: CVSection[];
+    [CVDocumentFields.Header]: CVHeader;
+    [CVDocumentFields.Sections]: CVSection[];
 }

@@ -1,10 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Jersey+10&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 /* You can add global styles to this file, and also import other style files */
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
-
 h1, h2, h3, h4, h5, h6 {
     font-family: Playfair Display, serif;
+}
+
+@media print{@page {size: landscape}}
+
+@page { 
+    size : portrait;
+    margin: 0;
+}
+@page rotated { size : landscape }
+
+* {
+  -webkit-print-color-adjust: exact; 
+}
+
+.jersey-10-regular {
+    font-family: "Jersey 10", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 4rem;
+    line-height: 1;
+    text-shadow: 2px 2px 4px rgb(12 10 9 / var(--tw-bg-opacity));
+
 }

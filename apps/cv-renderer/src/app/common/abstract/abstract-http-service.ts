@@ -1,19 +1,19 @@
 import axios, { AxiosResponse } from 'axios';
 
 export abstract class AbstractHttpService {
-    protected get<T>(url: string, options?: any): Promise<AxiosResponse<T, any>> {
-      return axios.get<T>(url, options);
+    protected async get<T>(url: string, options?: any): Promise<AxiosResponse<T, any>> {
+      return await axios.get<T>(url, options);
     }
   
-    protected post<T>(url: string, body: any, options?: any): Promise<AxiosResponse<T, any>> {
-      return axios.post<T>(url, body, options);
+    protected async post<T>(url: string, body: any, options?: any): Promise<AxiosResponse<T, any>> {
+      return await axios.post<T>(url, body, options);
     }
   
-    protected put<T>(url: string, body: any, options?: any): Promise<AxiosResponse<T, any>> {
-      return axios.put<T>(url, body, options);
+    protected async put<T>(url: string, body: any, options?: any): Promise<AxiosResponse<T, any>> {
+      return await axios.put<T>(url, body, options);
     }
   
-    protected delete<T>(url: string, options?: any): Promise<AxiosResponse<T, any>> {
-      return axios.delete<T>(url, options);
+    protected async delete<T>(url: string, options?: any): Promise<AxiosResponse<T, any>> {
+      return await axios.delete<T>(url, options);
     }
 }

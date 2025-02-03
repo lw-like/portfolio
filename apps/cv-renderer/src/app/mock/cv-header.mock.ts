@@ -1,6 +1,6 @@
 import { CVHeader, CVHeaderFields } from "../common/model/cv-header.model";
 
-const mockCVHeader: CVHeader = {
+export const CVHeaderMock: CVHeader = {
     [CVHeaderFields.Name]: "John Doe",
     [CVHeaderFields.Title]: "Senior Software Engineer",
     [CVHeaderFields.Email]: "john.doe@example.com",

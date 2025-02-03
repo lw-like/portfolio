@@ -1,18 +1,21 @@
-export function HeaderSection() {
+import { CVHeader } from "apps/cv-renderer/src/app/common/model/cv-header.model";
+import { pagePaddings } from "../../../../common/consts/page-paddings";
+
+export function HeaderSection(props: {data: CVHeader}) {
   const roleStyles = {
     transform: 'translateY(6rem)',
   }
 
   return (
-    <header className="p-8 pl-16 pr-16 flex w-full bg-stone-950 text-stone-50 shadow-xl">
+    <header className={`${pagePaddings} flex w-full bg-stone-950 text-stone-50 shadow-xl shadow-stone-700/55`}>
       <div>
         <h1 className="w-1/5 text-6xl/tight whitespace-break-spaces">
-          Test test
+          {props.data.name}
         </h1>
       </div>
       <div className="flex flex-1 flex-col justify-items-end text-sm text-right"> 
-        <p><span>tel: </span>+00 000 000 000</p>
-        <p><span>email: </span>aaaaa@aaaaa.aa</p>
+        <p><span>tel: </span>{props.data.phone}</p>
+        <p><span>email: </span>{props.data.email}</p>
         
         <span className="flex-1"></span>
 

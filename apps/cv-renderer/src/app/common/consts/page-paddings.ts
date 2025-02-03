@@ -1,0 +1,1 @@
+export const pagePaddings = 'p-8 pl-16 pr-16';

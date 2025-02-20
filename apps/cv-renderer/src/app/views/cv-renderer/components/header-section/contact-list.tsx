@@ -18,7 +18,7 @@ export function ContactList(props: {data: CVHeader}) {
           {
             props.data[CVHeaderFields.Links].map((link) => {
               return (
-                <li>
+                <li key={link.key}>
                   <a href={link.value} title={link.key} target="_blank" rel="noreferrer">
                     <img className="w-6" src={link.icon} alt={`${link.value} icon`} />
                   </a>

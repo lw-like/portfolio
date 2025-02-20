@@ -1,6 +1,7 @@
 export enum CVExperienceFields {
     Company = 'company',
     Position = 'position',
+    WorkType = 'workType',
     StartDate = 'startDate',
     EndDate = 'endDate',
     Stack = 'stack',
@@ -10,6 +11,7 @@ export enum CVExperienceFields {
 export interface CVExperience {
     [CVExperienceFields.Company]: string;
     [CVExperienceFields.Position]: string;
+    [CVExperienceFields.WorkType]?  : string;
     [CVExperienceFields.StartDate]: string;
     [CVExperienceFields.EndDate]: string;
     [CVExperienceFields.Stack]: string[];

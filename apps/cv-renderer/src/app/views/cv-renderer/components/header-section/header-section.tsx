@@ -1,4 +1,4 @@
-import { CVHeader } from "../../../../common/model/cv-header.model";
+import { CVHeader, CVHeaderFields } from "../../../../common/model/cv-header.model";
 import { pagePaddings } from "../../../../common/consts/page-paddings";
 import ProfileImage from "./profile-image";
 import ContactList from "./contact-list";
@@ -12,7 +12,7 @@ export function HeaderSection(props: {data: CVHeader}) {
     <header className={`${pagePaddings} flex w-full bg-stone-950 text-stone-50 shadow-xl shadow-stone-700/55`}>
       <div>
         <h1 className="w-1/5 text-6xl/tight whitespace-break-spaces">
-          {props.data.name}
+          {props.data[CVHeaderFields.Name]}
         </h1>
       </div>
       <div className="relative flex flex-1 flex-col justify-items-end text-sm text-right"> 

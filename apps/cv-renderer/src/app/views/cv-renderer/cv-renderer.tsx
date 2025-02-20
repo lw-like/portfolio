@@ -1,22 +1,19 @@
-import { Axios, AxiosResponse } from "axios";
-import { CVHeaderMock } from "../../mock/cv-header.mock";
+import { AxiosResponse } from "axios";
 import { DocumentService } from "../../services/document.service";
 import ContentSection from "./components/content-section/content-section";
 import HeaderSection from "./components/header-section/header-section";
 import { CVHeader } from "../../common/model/cv-header.model";
-import { Ref, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { CVExperience } from "../../common/model/cv-experience.model";
-import Timeline from "./components/timeline/timeline";
-import { pagePaddings } from "../../common/consts/page-paddings";
 import ContentListSection from "./components/content-list-section/content-list-section";
-import Education from "./components/education/education";
 import Footer from "./components/footer/footer";
 import ExperienceSection from "./components/experience-section/experience-section";
+import { KeyValue } from "../../common/model/cv-common.model";
 
 export function CvRenderer() {
   const documentService = new DocumentService();
-  const [cvHeader, setCvHeader] = useState<CVHeader>(CVHeaderMock);
-  const [cvBasic, setCvBasic] = useState<CVHeader>([]);
+  const [cvHeader, setCvHeader] = useState<CVHeader>();
+  const [cvBasic, setCvBasic] = useState<KeyValue[]>([]);
   const [cvEducation, setCvEducation] = useState<CVExperience[]>([]);
   const [cvExperience, setCvExperience] = useState<CVExperience[]>([]);
   const [cvSoftExp, setCvSoftExp] = useState<string[]>([]);
@@ -25,32 +22,41 @@ export function CvRenderer() {
   function fetchData(method: keyof DocumentService, setter: React.Dispatch<any>) {
     documentService[method]()
       .then((res: AxiosResponse) => setter(res.data))
-      .catch((error) => console.warn(error));
+      .catch((error) => {
+        console.warn(error);
+      });
   }
 
   useEffect( () => fetchData('fetchBasicData', setCvBasic), []);
   useEffect( () => fetchData('fetchDocumentHeader', setCvHeader), []);
+  useEffect( () => fetchData('fetchEducation', setCvEducation), []);
   useEffect( () => fetchData('fetchExperience', setCvExperience), []);
   useEffect( () => fetchData('fetchSoftExperience', setCvSoftExp), []);
   useEffect( () => fetchData('fetchTechnologies', setCvTechnologies), []);
 
   return (
     <main>
+      {cvHeader ? 
       <HeaderSection data={cvHeader} />
-      <div>
+      : null
+      }
         {/* <ContentSection title="Oś czasu">
           <Timeline experiences={cvExperience} />
         </ContentSection> */}
-        <ContentSection title="Podsumowanie doświadczenia">
+        <ContentSection title="Podsumowanie">
           <div className="flex-1">
             <ContentListSection 
               title="" 
               additionalHeaderClassName="text-[6.4rem]  absolute bottom-[-1.23rem] right-0 translate-x-[2.18rem] [writing-mode:sideways-lr] text-stone-300 " 
               render="keyValueList" 
               list={cvBasic} />
+
             <ExperienceSection
               title="Wykształcenie"
+              data={cvEducation}
+              type="education"
             />
+
             <ContentListSection 
               title="Umiejętności miękkie" 
               additionalHeaderClassName="text-left"
@@ -66,12 +72,13 @@ export function CvRenderer() {
           </div>
         </ContentSection>
 
-        <Education />
-        {/* <ContentListSection 
-          title="Edukacja" 
-          list={cvSoftExp} /> */}
-      </div>
-
+          
+        <ContentSection title="Doświadczenie">
+          <ExperienceSection
+                title="Doświadczenie"
+                data={cvExperience}
+              />
+        </ContentSection>
       <Footer />
     </main>
   );

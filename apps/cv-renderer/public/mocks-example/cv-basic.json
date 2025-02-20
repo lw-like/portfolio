@@ -1,0 +1,27 @@
+[
+    {
+        "key": "Name",
+        "value": "John Doe",
+        "icon": null
+    },
+    {
+        "key": "Language",
+        "value": "English",
+        "icon": null
+    },
+    {
+        "key": "City",
+        "value": "Warsaw, Poland",
+        "icon": null
+    },
+    {
+        "key": "Experience",
+        "value": "11 years (since 2014)",
+        "icon": null
+    },
+    {
+        "key": "Main stack",
+        "value": "JS, TS, Angular (2-19), Leaflet, NestJS, SQL",
+        "icon": null
+    }
+]

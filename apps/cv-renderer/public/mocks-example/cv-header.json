@@ -1,0 +1,19 @@
+{
+    "name": "John Doe",
+    "title": "Fullstack Developer",
+    "email": "test@test.com",
+    "phone": "123 456 789",
+    "location": "Warsaw, Poland",
+    "links": [
+        {
+            "key": "LinkedIn",
+            "value": "https://www.linkedin.com",
+            "icon": "/img/linkedin-white.png"
+        },
+        {
+            "key": "GitHub",
+            "value": "https://github.com",
+            "icon": "/img/github-white.png"
+        }
+    ]
+}

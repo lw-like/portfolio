@@ -38,3 +38,17 @@ h1, h2, h3, h4, h5, h6 {
     text-shadow: 2px 2px 4px rgb(12 10 9 / var(--tw-bg-opacity));
 }
 
+
+@media screen {
+    .page-footer {
+        display: none;
+    }
+}
+@media print {
+    .page-footer {
+        position: fixed;
+        bottom: 0;
+    }
+
+    .page, .page-break { break-after: page; }
+}

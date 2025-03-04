@@ -1,6 +1,6 @@
 import { Component } from "react";
 
-export class TechIcon extends Component<{techName: string}> {
+export class TechIcon extends Component<{techName: string, smaller?: boolean}> {
 
   getIconFileName() {
     const techName = this.props.techName.toLowerCase();
@@ -45,7 +45,7 @@ export class TechIcon extends Component<{techName: string}> {
   render() {
     const fileName = this.getIconFileName();
     return fileName ?(
-      <img className="h-7 fill-black text-black grayscale" src={`/img/${this.getIconFileName()}`} />
+      <img alt={this.props.techName} title={this.props.techName} className={`${this.props.smaller ? 'h-4' : 'h-7'} fill-black text-black grayscale`} src={`/img/${this.getIconFileName()}`} />
     ) : null;
   }
 }
